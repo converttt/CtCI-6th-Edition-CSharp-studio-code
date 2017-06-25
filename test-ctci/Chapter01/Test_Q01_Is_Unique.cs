@@ -6,7 +6,7 @@ namespace test_ctci
 {
     public class Test_Chapter01_Q1_Is_Unique
     {
-        Q01_Is_Unique isUnique = new Q01_Is_Unique();
+        private Q01_Is_Unique isUnique = new Q01_Is_Unique();
 
         [Fact]
         public void IsUniqueChar1()
