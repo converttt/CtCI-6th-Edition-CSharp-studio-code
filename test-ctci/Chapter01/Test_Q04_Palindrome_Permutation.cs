@@ -18,8 +18,6 @@ namespace test_ctci
             
             Assert.False(palindromePerm.PalindromePerm1("Tact Coa"));
             Assert.False(palindromePerm.PalindromePerm1("code core"));
-
-            Assert.True(palindromePerm.PalindromePerm1("a man a plan a canal panama"));
         }
     }
 }
