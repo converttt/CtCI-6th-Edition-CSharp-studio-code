@@ -57,7 +57,7 @@ namespace CH_01._Array_and_Strings
             Array.Sort(char1);
             Array.Sort(char2);
 
-            for(int i = 0; i <= char1.GetUpperBound(0); i++)
+            for (int i = 0; i <= char1.GetUpperBound(0); i++)
             {
                 if (char1[i] != char2[i])
                 {
