@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CH 01. Arrays and Strings\CH 01. Arrays and Strings.csproj" />
+    <ProjectReference Include="..\CH 02. Linked Lists\CH 02. Linked Lists.csproj" />
   </ItemGroup>
 
 </Project>
