@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using CH_02._Linked_Lists;
+using lib_ctci;
 
 namespace test_ctci
 {
@@ -12,21 +13,21 @@ namespace test_ctci
         [Fact]
         public void FindIntersection()
         {
-            Q07_LinkedListNode<int> listHead1 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> listHead2 = new Q07_LinkedListNode<int>(1);
+            CtciLinkedListNode<int> listHead1 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> listHead2 = new CtciLinkedListNode<int>(1);
 
-            Q07_LinkedListNode<int> node1 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node2 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node3 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node4 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node5 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node6 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node7 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node8 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node9 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node10 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node11 = new Q07_LinkedListNode<int>(1);
-            Q07_LinkedListNode<int> node12 = new Q07_LinkedListNode<int>(1);
+            CtciLinkedListNode<int> node1 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node2 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node3 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node4 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node5 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node6 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node7 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node8 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node9 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node10 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node11 = new CtciLinkedListNode<int>(1);
+            CtciLinkedListNode<int> node12 = new CtciLinkedListNode<int>(1);
 
             listHead1.Next = node1;
             node1.Next = node2;

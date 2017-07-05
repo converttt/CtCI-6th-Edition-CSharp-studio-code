@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using lib_ctci;
 
 namespace CH_02._Linked_Lists
 {
     public class Q07_Palindrome<T>
     {
-        public Q07_LinkedListNode<T> FindIntersection(Q07_LinkedListNode<T> listNode1, Q07_LinkedListNode<T> listNode2)
+        public CtciLinkedListNode<T> FindIntersection(CtciLinkedListNode<T> listNode1, CtciLinkedListNode<T> listNode2)
         {
             if (listNode1 == null || listNode2 == null)
             {
@@ -20,8 +21,8 @@ namespace CH_02._Linked_Lists
                 return null;
             }
 
-            Q07_LinkedListNode<T> longer;
-            Q07_LinkedListNode<T> shorter;
+            CtciLinkedListNode<T> longer;
+            CtciLinkedListNode<T> shorter;
             if (result1.length >= result2.length)
             {
                 longer = listNode1;
@@ -54,7 +55,7 @@ namespace CH_02._Linked_Lists
             return null;
         }
 
-        public Q07_Result<T> FindLengthAndLastNode(Q07_LinkedListNode<T> listNode)
+        public Q07_Result<T> FindLengthAndLastNode(CtciLinkedListNode<T> listNode)
         {
             int length = 1;
 
@@ -71,47 +72,12 @@ namespace CH_02._Linked_Lists
     public class Q07_Result<T>
     {
         public int length;
-        public Q07_LinkedListNode<T> lastNode;
+        public CtciLinkedListNode<T> lastNode;
 
-        public Q07_Result(int length, Q07_LinkedListNode<T> lastNode)
+        public Q07_Result(int length, CtciLinkedListNode<T> lastNode)
         {
             this.length = length;
             this.lastNode = lastNode;
-        }
-    }
-
-    public class Q07_LinkedListNode<T>
-    {
-        protected Q07_LinkedListNode<T> next;
-        protected T value;
-
-        public Q07_LinkedListNode(T value)
-        {
-            this.value = value;
-        }
-
-        public T Value
-        {
-            get
-            {
-                return this.value;
-            }
-            set
-            {
-                this.value = value;
-            }
-        }
-
-        public Q07_LinkedListNode<T> Next
-        {
-            get
-            {
-                return next;
-            }
-            set
-            {
-                this.next = value;
-            }
         }
     }
 }
