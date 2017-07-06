@@ -7,10 +7,23 @@ namespace lib_ctci
     {
         protected List<CtciTreeNode<T>> children = new List<CtciTreeNode<T>>();
         protected T value;
+        protected CtciTreeNode<T> parent;
 
         public CtciTreeNode(T value)
         {
             this.value = value;
+        }
+
+        public CtciTreeNode<T> Parent
+        {
+            get
+            {
+                return parent;
+            }
+            set
+            {
+                parent = value;
+            }
         }
 
         public List<CtciTreeNode<T>> Children
