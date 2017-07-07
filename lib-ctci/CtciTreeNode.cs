@@ -14,6 +14,26 @@ namespace lib_ctci
             this.value = value;
         }
 
+        static public CtciTreeNode<T> CtciBinaryTreeNode(T value)
+        {
+            CtciTreeNode<T> node = new CtciTreeNode<T>(value);
+            node.Children.Add(null);
+            node.Children.Add(null);
+            return node;
+        }
+
+        public T Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+            }
+        }
+
         public CtciTreeNode<T> Parent
         {
             get
@@ -42,6 +62,11 @@ namespace lib_ctci
         {
             get
             {
+                if (children.Count <= 0)
+                {
+                    return null;
+                }
+
                 return children[0];
             }
             set
@@ -54,6 +79,11 @@ namespace lib_ctci
         {
             get
             {
+                if (children.Count < 2)
+                {
+                    return null;
+                }
+
                 return children[1];
             }
             set
