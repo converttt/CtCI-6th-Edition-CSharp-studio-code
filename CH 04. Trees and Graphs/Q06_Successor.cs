@@ -4,7 +4,7 @@ using lib_ctci;
 
 namespace CH_04._Trees_and_Graphs
 {
-    public class Q04_Successor<T>
+    public class Q06_Successor<T>
     {
         public CtciTreeNode<T> FindSuccessor(CtciTreeNode<T> node)
         {

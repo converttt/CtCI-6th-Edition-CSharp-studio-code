@@ -88,7 +88,7 @@ namespace CH_04._Trees_and_Graphs
             {
                 parent = child;
 
-                if (newNode.Value < child.Value)
+                if (newNode.Value <= child.Value)
                 {
                     child = child.Left;
                 }
@@ -98,7 +98,7 @@ namespace CH_04._Trees_and_Graphs
                 }
             }
 
-            if (newNode.Value < parent.Value)
+            if (newNode.Value <= parent.Value)
             {
                 parent.Left = newNode;
             }
