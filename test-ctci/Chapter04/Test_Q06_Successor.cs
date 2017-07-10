@@ -6,7 +6,7 @@ using lib_ctci;
 
 namespace test_ctci
 {
-    public class Test_Chapter06_Q4_Successor
+    public class Test_Chapter04_Q4_Successor
     {
         private Q06_Successor<int> successor = new Q06_Successor<int>();
 
