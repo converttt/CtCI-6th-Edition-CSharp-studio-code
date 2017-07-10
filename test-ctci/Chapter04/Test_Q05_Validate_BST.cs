@@ -6,7 +6,7 @@ using lib_ctci;
 
 namespace test_ctci
 {
-    public class Test_Chapter04_Q5_Successor
+    public class Test_Chapter04_Q5_Validate_BST
     {
         private Q05_Validate_BST validateBst = new Q05_Validate_BST();
 
