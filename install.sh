@@ -13,4 +13,6 @@ dotnet add test-ctci/test-ctci.csproj reference lib-ctci/lib-ctci.csproj
 dotnet sln add "CH 04. Trees and Graphs"/"CH 04. Trees and Graphs".csproj
 dotnet add test-ctci/test-ctci.csproj reference "CH 04. Trees and Graphs"/"CH 04. Trees and Graphs".csproj
 dotnet add  "CH 04. Trees and Graphs"/"CH 04. Trees and Graphs".csproj reference lib-ctci/lib-ctci.csproj
+dotnet sln add Introduction/Introduction.csproj
+dotnet add test-ctci/test-ctci.csproj reference Introduction/Introduction.csproj
 dotnet restore
