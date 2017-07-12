@@ -15,4 +15,6 @@ dotnet add test-ctci/test-ctci.csproj reference "CH 04. Trees and Graphs"/"CH 04
 dotnet add  "CH 04. Trees and Graphs"/"CH 04. Trees and Graphs".csproj reference lib-ctci/lib-ctci.csproj
 dotnet sln add Introduction/Introduction.csproj
 dotnet add test-ctci/test-ctci.csproj reference Introduction/Introduction.csproj
+dotnet sln add "CH 05. Bit Manipulations"/"CH 05. Bit Manipulations".csproj
+dotnet add test-ctci/test-ctci.csproj reference "CH 05. Bit Manipulations"/"CH 05. Bit Manipulations".csproj
 dotnet restore
