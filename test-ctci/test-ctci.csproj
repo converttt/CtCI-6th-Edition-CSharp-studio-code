@@ -17,6 +17,7 @@
     <ProjectReference Include="..\CH 04. Trees and Graphs\CH 04. Trees and Graphs.csproj" />
     <ProjectReference Include="..\Introduction\Introduction.csproj" />
     <ProjectReference Include="..\CH 05. Bit Manipulations\CH 05. Bit Manipulations.csproj" />
+    <ProjectReference Include="..\Common Topics\Common Topics.csproj" />
   </ItemGroup>
 
 </Project>
