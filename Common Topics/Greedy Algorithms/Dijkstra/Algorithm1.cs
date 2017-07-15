@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 // This is an example for
-// UNWEIGHTED UNDIRECTED GRAPH
+// Unweighted Undirected Graph with Adjacency List
 
 namespace Common_Topics
 {
