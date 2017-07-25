@@ -54,7 +54,7 @@ namespace Common_Topics
             We earn the profit if and only if the job is completed by its deadline. 
             The task is to find the subset of jobs that maximizes profit.
 
-            Complexety: O()
+            Complexety: O(n*log(n))
          */
         public static List<Sequencing_Job> FindSequence2(Sequencing_Job[] jobs)
         {
