@@ -32,5 +32,28 @@ namespace test_ctci
             Assert.Equal(sequence.First.Value, task3);
             Assert.Equal(sequence.Last.Value, task5);
         }
+
+        [Fact]
+        public void FindOverlapNumber()
+        {
+            Greedy_Task task1 = new Greedy_Task(1, 4);
+            Greedy_Task task2 = new Greedy_Task(2, 6);
+            Greedy_Task task3 = new Greedy_Task(10, 12);
+            Greedy_Task task4 = new Greedy_Task(5, 9);
+            Greedy_Task task5 = new Greedy_Task(5, 12);
+
+            Greedy_Task[] tasks = new Greedy_Task[] {
+                task1, task2, task3, task4, task5
+            };
+
+            List<Greedy_Task> overlapped = Greedy_Maximum_Number.FindOverlapNumber(tasks);
+            Greedy_Task[] overlappedArr = overlapped.ToArray();
+            Array.Sort(overlappedArr, new Number_ComparerEndtime());
+
+            Assert.Equal(3, overlapped.Count);
+            Assert.Equal(overlappedArr[0], task2);
+            Assert.Equal(overlappedArr[1], task4);
+            Assert.Equal(overlappedArr[2], task5);
+        }
     }
 }

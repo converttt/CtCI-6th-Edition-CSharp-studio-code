@@ -35,6 +35,82 @@ namespace Common_Topics
 
             return sequence;
         }
+
+        /*
+            The array of tasks is given. 
+            Find the number of tasks that are performed simultaneusly.
+
+            Complexety: O(n*log(n))
+         */
+        public static List<Greedy_Task> FindOverlapNumber(Greedy_Task[] tasks)
+        {
+            List<Greedy_Task> overlapped = new List<Greedy_Task>();
+
+            if (tasks.Length <= 0)
+            {
+                return overlapped;
+            }
+
+            if (tasks.Length == 1)
+            {
+                overlapped.Add(tasks[0]);
+                return overlapped;
+            }
+
+            Greedy_Task[] starts = new Greedy_Task[tasks.Length];
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                starts[i] = tasks[i];
+            }
+
+            Greedy_Task[] ends = new Greedy_Task[tasks.Length];
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                ends[i] = tasks[i];
+            }
+
+            Array.Sort(starts, new Number_ComparerStarttime());
+            Array.Sort(ends, new Number_ComparerEndtime());
+
+            int startCoursor = 1;
+            int endCoursor = 0;
+            int currentNumber = 1;
+            int maxNumber = 1;
+
+            HashSet<Greedy_Task> tmpSet = new HashSet<Greedy_Task>();
+            tmpSet.Add(starts[0]);
+
+            while (startCoursor < tasks.Length && endCoursor < tasks.Length)
+            {
+                if (starts[startCoursor].Starttime < ends[endCoursor].Endtime)
+                {
+                    currentNumber++;
+                    tmpSet.Add(starts[startCoursor]);
+
+                    if (currentNumber > maxNumber)
+                    {
+                        maxNumber = currentNumber;
+                        
+                        overlapped.Clear();
+                        foreach (Greedy_Task task in tmpSet)
+                        {
+                            overlapped.Add(task);
+                        }
+                    }
+
+                    startCoursor++;
+                }
+                else
+                {
+                    currentNumber--;
+                    tmpSet.Remove(ends[endCoursor]);
+
+                    endCoursor++;
+                }
+            }
+
+            return overlapped;
+        }
     }
 
     public class Greedy_Task : IComparable
@@ -69,6 +145,22 @@ namespace Common_Topics
             {
                 return endtime;
             }
+        }
+    }
+
+    public class Number_ComparerEndtime : IComparer<Greedy_Task>
+    {
+        int IComparer<Greedy_Task>.Compare(Greedy_Task x, Greedy_Task y)
+        {
+            return x.Endtime.CompareTo(y.Endtime);
+        }
+    }
+
+    public class Number_ComparerStarttime : IComparer<Greedy_Task>
+    {
+        int IComparer<Greedy_Task>.Compare(Greedy_Task x, Greedy_Task y)
+        {
+            return x.Starttime.CompareTo(y.Starttime);
         }
     }
 }
