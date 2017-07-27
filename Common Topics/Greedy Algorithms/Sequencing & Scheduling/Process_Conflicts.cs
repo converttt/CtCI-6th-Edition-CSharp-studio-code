@@ -5,11 +5,54 @@ namespace Common_Topics
 {
     public static class Process_Conflicts
     {
-        public static Greedy_Process[] FindConflicts(Greedy_Process[] processes)
+        /*
+            Consider a RAM organized in blocks. There are multiple processes running on the system. Every application gets below information.
+
+            (Thread T, Memory Block M, time t, R/W) which essentially tells that the thread T was using memory block M at time t and operation could be read or write.
+
+            Memory conflict is defined as –
+            – Multiple read operations at the same location are not cause of conflict.
+            – One write operation between x+5 to x-5 to location M, will be cause of conflict for a thread accessing location M at time x where x is some time in standard unit of time measurement.
+            – Example – If thread T1 accessed memory location M at time x+1 and if a thread T2 accesses location M before time x+6, then T1 and T2 are candidate of conflict given one of them does write operation.
+
+            Complexity: O(nLogn + m), m - the number of conflicts
+         */
+        public static List<Tuple<Greedy_Process, Greedy_Process>> FindConflicts(Greedy_Process[] processes)
         {
+            List<Tuple<Greedy_Process, Greedy_Process>> result = new List<Tuple<Greedy_Process, Greedy_Process>>();
+
+            if (processes.Length < 2)
+            {
+                return result;
+            }
+
             Array.Sort(processes, new Process_ComparerMemoryThenTime());
 
-            return processes;
+            for (int i = 1; i < processes.Length; i++)
+            {
+                if (processes[i].MemoryBlock == processes[i - 1].MemoryBlock)
+                {
+                    if (processes[i].TimeSlot <= processes[i - 1].TimeSlot + 5)
+                    {
+                        int j = i - 1;
+
+                        while (processes[i].MemoryBlock == processes[j].MemoryBlock &&
+                            processes[i].TimeSlot <= processes[j].TimeSlot + 5 &&
+                            j >= 0)
+                        {
+                            if (processes[i].Operation == Greedy_Process.Write || 
+                                processes[j].Operation == Greedy_Process.Write)
+                            {
+                                result.Add(new Tuple<Greedy_Process, Greedy_Process>(processes[i], processes[j]));
+                            }
+
+                            j--;
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
     }
 

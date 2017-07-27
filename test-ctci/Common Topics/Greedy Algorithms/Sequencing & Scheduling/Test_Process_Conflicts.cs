@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 using Common_Topics;
 
@@ -18,9 +19,15 @@ namespace test_ctci
             Greedy_Process process7 = new Greedy_Process(7, 835, 7, Greedy_Process.Read);
             Greedy_Process process8 = new Greedy_Process(8, 432, 8, Greedy_Process.Read);
 
-            Greedy_Process[] result = Process_Conflicts.FindConflicts(new Greedy_Process[] {
+            List<Tuple<Greedy_Process, Greedy_Process>> result = Process_Conflicts.FindConflicts(new Greedy_Process[] {
                 process1, process2, process3, process4, process5, process6, process7, process8
             });
+
+            Assert.Equal(2, result.Count);
+            Assert.Equal(5, result[0].Item1.Id);
+            Assert.Equal(3, result[0].Item2.Id);
+            Assert.Equal(5, result[1].Item1.Id);
+            Assert.Equal(1, result[1].Item2.Id);
         }
     }
 }
