@@ -8,9 +8,11 @@ namespace test_ctci
     public class Test_Combinations
     {
         [Fact]
-        public void Combinations()
+        public void Combinations1()
         {
-            
+            List<List<int>> result = Combinations.CombinationProblem1(new int[] {1, 2, 3});
+
+            Assert.Equal(result.Count, 7);
         }
     }
 }

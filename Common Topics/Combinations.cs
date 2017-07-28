@@ -20,7 +20,7 @@ namespace Common_Topics
                 extArr.Add(combination);
                 for (int i = 0; i < arr.Length; i++)
                 {
-                    if ((vector & (1 << i)) == 1)
+                    if ((vector & (1 << i)) != 0)
                     {
                         combination.Add(arr[i]);
                     }
@@ -31,12 +31,14 @@ namespace Common_Topics
             int maxVector = (1 << arr.Length) - 1;
             List<List<int>> result = new List<List<int>>();
 
-            while (initVector < maxVector)
+            while (initVector <= maxVector)
             {
                 addComb(initVector, result);
 
                 initVector++;
             }
+
+            return result;
         }
     }
 }
