@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Common_Topics
@@ -37,6 +38,26 @@ namespace Common_Topics
 
                 initVector++;
             }
+
+            return result;
+        }
+
+        /*
+            Combination (subset) extension method.
+
+            Generate all possible combinations of fixed size subsets from a set.
+
+            The number of combinations can be derived usgin the formula:
+            n! / (k! * (n - k)!)
+         */
+        public static List<List<int>> CombinationProblem2(int[] arr, int subset)
+        {
+            List<List<int>> result = (from int vector in Enumerable.Range(1, (1 << arr.Length) - 1)
+                let comb = (from int i in Enumerable.Range(0, arr.Length)
+                where (vector & (1 << i)) != 0
+                select arr[i]).ToList()
+            where comb.Count == subset
+            select comb).ToList();
 
             return result;
         }
