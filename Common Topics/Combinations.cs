@@ -16,7 +16,7 @@ namespace Common_Topics
          */
         public static List<List<int>> CombinationProblem1(int[] arr)
         {
-            Action<int, List<List<int>>> addComb = (vector, extArr) => {
+            Action<int, List<List<int>>> AddComb = (vector, extArr) => {
                 List<int> combination = new List<int>();
                 extArr.Add(combination);
                 for (int i = 0; i < arr.Length; i++)
@@ -34,7 +34,7 @@ namespace Common_Topics
 
             while (initVector <= maxVector)
             {
-                addComb(initVector, result);
+                AddComb(initVector, result);
 
                 initVector++;
             }
