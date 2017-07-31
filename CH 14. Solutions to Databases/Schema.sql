@@ -1,11 +1,11 @@
-# postgresql schema
+-- postgresql schema
 
-DROP TABLE IF EXISTS Buildings;
-DROP SEQUENCE IF EXISTS buildings_id_seq;
-DROP TABLE IF EXISTS Apartments;
-DROP SEQUENCE IF EXISTS apartments_id_seq;
 DROP TABLE IF EXISTS Requests;
 DROP SEQUENCE IF EXISTS requests_id_seq;
+DROP TABLE IF EXISTS Apartments;
+DROP SEQUENCE IF EXISTS apartments_id_seq;
+DROP TABLE IF EXISTS Buildings;
+DROP SEQUENCE IF EXISTS buildings_id_seq;
 
 CREATE SEQUENCE buildings_id_seq;
 CREATE TABLE Buildings (

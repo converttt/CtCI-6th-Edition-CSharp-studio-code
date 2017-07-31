@@ -1,4 +1,4 @@
-# SOLUTION 1
+-- SOLUTION 1
 SELECT Buildings.*, COUNT(Requests.RequestID) AS ReqNum
 FROM Buildings
 LEFT JOIN Apartments USING (BuilidingID)
@@ -6,7 +6,7 @@ LEFT JOIN Requests ON (Requests.AptID = Apartments.AptID AND Requests.Status = '
 GROUP BY Buildings.BuilidingID
 ORDER BY ReqNum DESC;
 
-#SOLUTION 2
+-- SOLUTION 2
 SELECT Buildings.*, COUNT(Requests.RequestID) AS ReqNum
 FROM Buildings
 LEFT JOIN Apartments USING (BuilidingID)
