@@ -66,5 +66,37 @@ namespace test_ctci
             Assert.Equal(node47, avlTree.Root.Right.Left);
             Assert.Equal(node50, avlTree.Root.Right.Right);
         }
+
+        [Fact]
+        public void Deletion()
+        {
+            AVL_Node node0 = new AVL_Node(0);
+            AVL_Node node1 = new AVL_Node(1);
+            AVL_Node node2 = new AVL_Node(2);
+            AVL_Node node3 = new AVL_Node(3);
+            AVL_Node node5 = new AVL_Node(5);
+            AVL_Node node6 = new AVL_Node(6);
+            AVL_Node node7 = new AVL_Node(7);
+            AVL_Node node9 = new AVL_Node(9);
+            AVL_Node node10 = new AVL_Node(10);
+            AVL_Node node11 = new AVL_Node(11);
+
+            AVL_Tree avlTree = new AVL_Tree(node9);
+            avlTree.Insert(node2);
+            avlTree.Insert(node10);
+            avlTree.Insert(node1);
+            avlTree.Insert(node5);
+            avlTree.Insert(node11);
+            avlTree.Insert(node0);
+            avlTree.Insert(node3);
+            avlTree.Insert(node6);
+
+            avlTree.Delete(node10);
+
+            Assert.Equal(node2, avlTree.Root);
+            Assert.Equal(node9, avlTree.Root.Right);
+            Assert.Equal(node1, avlTree.Root.Left);
+            Assert.Equal(node5, avlTree.Root.Right.Left);
+        }
     }
 }

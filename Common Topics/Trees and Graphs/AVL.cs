@@ -16,6 +16,11 @@ namespace Common_Topics
             _root = _Insert(_root, node);
         }
 
+        public void Delete(AVL_Node node)
+        {
+            _root = _Delete(_root, node);
+        }
+
         // Insert a node and balance a tree
         private AVL_Node _Insert(AVL_Node root, AVL_Node node)
         {
@@ -66,6 +71,67 @@ namespace Common_Topics
             return root;
         }
 
+        //Delete a node a balance a tree
+        private AVL_Node _Delete(AVL_Node root, AVL_Node node)
+        {
+            if (root == null)
+            {
+                return root;
+            }
+
+            if (node.ID < root.ID)
+            {
+                root.Left = _Delete(root.Left, node);
+            }
+            else if (node.ID > root.ID)
+            {
+                root.Right = _Delete(root.Right, node);
+            }
+            else
+            {
+                if (root.Right == null)
+                {
+                    return root.Left;
+                }
+                else
+                {
+                    return _GetTheMostLeft(root.Right);
+                }
+            }
+
+            root.Height = Math.Max(root.Left.Height, root.Right.Height) + 1;
+
+            int balance = _GetBalance(root);
+
+            //Left Left case
+            if (balance > 1 && _GetBalance(root.Left) >= 0)
+            {
+                return _RotateRight(root);
+            }
+
+            // Left Right case
+            if (balance > 1 && _GetBalance(root.Left) < 0)
+            {
+                root.Left = _RotateLeft(root.Left);
+                return _RotateRight(root);
+            }
+
+            //Right Right case
+            if (balance < 1 && _GetBalance(root.Right) < 0)
+            {
+                return _RotateLeft(root);
+            }
+
+            //Right Left case
+            if (balance < 1 && _GetBalance(root.Right) >= 0)
+            {
+                root.Right = _RotateRight(root.Right);
+                return _RotateLeft(root);
+            }
+
+            return root;
+        }
+
         private AVL_Node _RotateLeft(AVL_Node node)
         {
             AVL_Node root = node.Right;
@@ -88,6 +154,21 @@ namespace Common_Topics
             root.Height = Math.Max(root.LeftHeight, root.RightHeight) + 1;
 
             return root;
+        }
+
+        private AVL_Node _GetTheMostLeft(AVL_Node node)
+        {
+            if (node.Left == null)
+            {
+                return node;
+            }
+
+            return _GetTheMostLeft(node.Left);
+        }
+
+        private int _GetBalance(AVL_Node node)
+        {
+            return node.LeftHeight - node.RightHeight;
         }
 
         public AVL_Node Root
