@@ -32,6 +32,19 @@ namespace Common_Topics
             return _BuildTreeRecur2(0, linkedList.Count - 1);
         }
 
+        /*
+            Given a BST (Binary Search Tree) that may be unbalanced, 
+            convert it into a balanced BST that has minimum possible height.
+
+            Time Complexity: O(n)
+         */
+        public static LinkedList_To_BST_Node BuildBalancedTreeFromTree(LinkedList_To_BST_Node head)
+        {
+            LinkedList<int> traversedList = new LinkedList<int>();
+            _InOrderTraverse(head, traversedList);
+            return BuildTree1(traversedList);
+        }
+
         private static LinkedList_To_BST_Node _BuildTreeRecur1(int n)
         {
             if (n <= 0)
@@ -86,6 +99,18 @@ namespace Common_Topics
             }
 
             return head;
+        }
+
+        private static void _InOrderTraverse(LinkedList_To_BST_Node node, LinkedList<int> linkedList)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            _InOrderTraverse(node.Left, linkedList);
+            linkedList.AddLast(node.ID);
+            _InOrderTraverse(node.Right, linkedList);
         }
     }
 
