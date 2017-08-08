@@ -9,7 +9,10 @@ namespace ctci
         {
             Console.WriteLine("Cracking The Coding Interview!");
 
-            Threads_Monitor();
+            /*
+                Producer Consumer Problem
+             */
+            // Threads_Monitor();
         }
 
         static void Threads_Monitor()
