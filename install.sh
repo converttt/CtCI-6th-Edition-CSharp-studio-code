@@ -20,4 +20,5 @@ dotnet add test-ctci/test-ctci.csproj reference "CH 05. Bit Manipulations"/"CH 0
 dotnet sln add "Common Topics"/"Common Topics".csproj
 dotnet add test-ctci/test-ctci.csproj reference "Common Topics"/"Common Topics".csproj
 dotnet add "Common Topics"/"Common Topics".csproj reference lib-ctci/lib-ctci.csproj
+dotnet add ctci/ctci.csproj reference "Common Topics"/"Common Topics".csproj
 dotnet restore

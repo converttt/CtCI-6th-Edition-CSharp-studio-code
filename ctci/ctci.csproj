@@ -1,14 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
     <ProjectReference Include="..\CH 01. Arrays and Strings\CH 01. Arrays and Strings.csproj" />
     <ProjectReference Include="..\CH 02. Linked Lists\CH 02. Linked Lists.csproj" />
     <ProjectReference Include="..\CH 04. Trees and Graphs\CH 04. Trees and Graphs.csproj" />
+    <ProjectReference Include="..\Common Topics\Common Topics.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="System.Threading" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+  </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-
 </Project>
