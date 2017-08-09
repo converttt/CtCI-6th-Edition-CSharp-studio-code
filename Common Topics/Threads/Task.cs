@@ -33,11 +33,11 @@ namespace Common_Topics
         public void Do()
         {
             Random random = new Random();
-            int millis = random.Next(500, 1001);
+            int millis = random.Next(1000, 2001);
 
-            Console.WriteLine(String.Format("Start doing task ID: {0} Name: {1} Time: {2}", _id, _name, millis));
+            Console.WriteLine(String.Format("Thread {0} starts doing task Task: {1} Time: {2}", Thread.CurrentThread.Name, _name, millis));
             Thread.Sleep(millis);
-            Console.WriteLine(String.Format("Finish doing task ID: {0} Name: {1} Time: {2}", _id, _name, millis));
+            Console.WriteLine(String.Format("Thread {0} finishes doing task Task: {1} Time: {2}", Thread.CurrentThread.Name, _name, millis));
         }
     }
 }

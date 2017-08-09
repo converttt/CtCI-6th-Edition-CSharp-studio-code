@@ -9,15 +9,21 @@ namespace ctci
         {
             Console.WriteLine("Cracking The Coding Interview!");
 
-            /*
-                Producer Consumer Problem
-             */
-            // Threads_Monitor();
+            Threads_Monitor();
         }
 
         static void Threads_Monitor()
         {
-            Threads_RunThreads.Monitor();
+            /*
+                Producer Consumer Problem
+             */
+            // Threads_RunThreads.Monitor();
+
+
+            /*
+                Producer Consumer Problem with Semaphores
+             */
+            // Threads_RunThreads.Semaphores();
         }
     }
 }
