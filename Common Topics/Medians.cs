@@ -23,6 +23,11 @@ namespace Common_Topics
             return _median;
         }
 
+        public static int MedianOfUnequal(int[] a, int[] b)
+        {
+            return _MedianOfUnequal(a, 0, a.Length - 1, b, 0, b.Length - 1);
+        }
+
         private static void _MedianOfEqual(int[] a, int aStart, int aFinish, int[] b, int bStart, int bFinish)
         {
             if ((aFinish - aStart + 1) == 2)
@@ -46,6 +51,119 @@ namespace Common_Topics
             {
                 _MedianOfEqual(a, aStart, (aFinish + aStart) / 2, b, (bFinish + bStart) / 2 + 1, bFinish);   
             }
+        }
+
+        private static int _MedianOfUnequal(int[] a, int[] b)
+        {
+            if (a.Length == 1 && b.Length == 1)
+            {
+                return (a[0] + b[0]) / 2;
+            }
+
+            int[] smallArr;
+            int[] largeArr;
+            if (a.Length > b.Length)
+            {
+                smallArr = b;
+                largeArr = a;
+            }
+            else
+            {
+                smallArr = a;
+                largeArr = b;
+            }
+            int largeMedianI = (largeArr.Length - 1) / 2;
+
+            if (a.Length == 1 || b.Length == 1)
+            {
+                if (largeArr.Length % 2 == 0)
+                {
+                    if (smallArr[0] < largeArr[largeMedianI])
+                    {
+                        return largeArr[largeMedianI];
+                    }
+                    else if (smallArr[0] > largeArr[largeMedianI + 1])
+                    {
+                        return largeArr[largeMedianI + 1];
+                    }
+                    else
+                    {
+                        return smallArr[0];
+                    }
+                }
+                else
+                {
+                    if (smallArr[0] < largeArr[largeMedianI - 1])
+                    {
+                        return (largeArr[largeMedianI - 1] + largeArr[largeMedianI]) / 2;
+                    }
+                    else if (smallArr[0] > largeArr[largeMedianI + 1])
+                    {
+                        return (largeArr[largeMedianI + 1] + largeArr[largeMedianI]) / 2;
+                    }
+                    else
+                    {
+                        return (smallArr[0] + largeArr[largeMedianI]) / 2;
+                    }
+                }
+            }
+            else if (a.Length == 2 || b.Length == 2)
+            {
+                if (largeArr.Length % 2 == 0)
+                {
+                    if (Math.Max(smallArr[0], smallArr[1]) < largeArr[largeMedianI - 1])
+                    {
+                        return (largeArr[largeMedianI] + largeArr[largeMedianI - 1]) / 2;
+                    }
+                    else if (Math.Min(smallArr[0], smallArr[1]) > largeArr[largeMedianI + 1])
+                    {
+                        return (largeArr[largeMedianI + 1] + largeArr[largeMedianI + 2]) / 2;
+                    }
+                    else
+                    {
+                        return _MedianOf4(smallArr[0], smallArr[1], largeArr[largeMedianI], largeArr[largeMedianI + 1]);
+                    }
+                }
+                else
+                {
+                    if (Math.Max(smallArr[0], smallArr[1]) < largeArr[largeMedianI - 1])
+                    {
+                        return largeArr[largeMedianI - 1];
+                    }
+                    else if (Math.Min(smallArr[0], smallArr[1]) > largeArr[largeMedianI + 1])
+                    {
+                        return largeArr[largeMedianI + 1];
+                    }
+                    else
+                    {
+                        return _MedianOf3(smallArr[0], smallArr[1], largeArr[largeMedianI]);
+                    }
+                }
+            }
+
+            int[] newA = new int[a.Length - (a.Length - 1) / 2];
+            Array.Copy(a, 0, newA, 0, newA.Length);
+
+            int[] newB = new int[b.Length - (b.Length - 1) / 2];
+            Array.Copy(b, 0, newB, 0, newB.Length);
+
+            return _MedianOfUnequal(newA, newB);
+        }
+
+        private static int _MedianOf4(int a, int b, int c, int d)
+        {
+            int[] arr = new int[] {a, b, c, d};
+            Array.Sort(arr);
+
+            return (arr[1] + arr[2]) / 2;
+        }
+
+        private static int _MedianOf3(int a, int b, int c)
+        {
+            int[] arr = new int[] {a, b, c};
+            Array.Sort(arr);
+
+            return arr[1];
         }
         
         private static int _Median(int[] arr, int start, int finish)
