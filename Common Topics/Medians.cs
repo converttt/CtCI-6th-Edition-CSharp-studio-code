@@ -25,7 +25,7 @@ namespace Common_Topics
 
         public static int MedianOfUnequal(int[] a, int[] b)
         {
-            return _MedianOfUnequal(a, 0, a.Length - 1, b, 0, b.Length - 1);
+            return _MedianOfUnequal(a, b);
         }
 
         private static void _MedianOfEqual(int[] a, int aStart, int aFinish, int[] b, int bStart, int bFinish)
@@ -115,7 +115,7 @@ namespace Common_Topics
                     {
                         return (largeArr[largeMedianI] + largeArr[largeMedianI - 1]) / 2;
                     }
-                    else if (Math.Min(smallArr[0], smallArr[1]) > largeArr[largeMedianI + 1])
+                    else if (Math.Min(smallArr[0], smallArr[1]) > largeArr[largeMedianI + 2])
                     {
                         return (largeArr[largeMedianI + 1] + largeArr[largeMedianI + 2]) / 2;
                     }
@@ -141,11 +141,27 @@ namespace Common_Topics
                 }
             }
 
-            int[] newA = new int[a.Length - (a.Length - 1) / 2];
-            Array.Copy(a, 0, newA, 0, newA.Length);
+            int aMedianI = a.Length / 2;
+            int bMedianI = b.Length / 2;
 
-            int[] newB = new int[b.Length - (b.Length - 1) / 2];
-            Array.Copy(b, 0, newB, 0, newB.Length);
+            int[] newA;
+            int[] newB;
+            if (a[aMedianI] < b[bMedianI])
+            {
+                newA = new int[a.Length - aMedianI];
+                Array.Copy(a, aMedianI, newA, 0, a.Length - aMedianI);
+
+                newB = new int[bMedianI + 1];
+                Array.Copy(b, 0, newB, 0, bMedianI + 1);
+            }
+            else
+            {
+                newA = new int[aMedianI + 1];
+                Array.Copy(a, 0, newA, 0, aMedianI + 1);
+
+                newB = new int[b.Length - bMedianI];
+                Array.Copy(b, bMedianI, newB, 0, b.Length - bMedianI);
+            }
 
             return _MedianOfUnequal(newA, newB);
         }
