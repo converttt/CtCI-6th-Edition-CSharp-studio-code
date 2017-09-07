@@ -17,5 +17,17 @@ namespace test_ctci
                 3, 10, 2, 1, 20
             }));
         }
+
+        [Fact]
+        public void TestMaxOfChains()
+        {
+            Assert.Equal(3, LIS.FindMaxOfChains(new Tuple<int, int>[] {
+                new Tuple<int, int>(5, 24),
+                new Tuple<int, int>(39, 60),
+                new Tuple<int, int>(15, 28),
+                new Tuple<int, int>(27, 40),
+                new Tuple<int, int>(50, 90),
+            }));
+        }
     }
 }

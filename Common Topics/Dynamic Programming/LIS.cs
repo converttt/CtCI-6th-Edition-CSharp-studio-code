@@ -20,9 +20,45 @@ namespace Common_Topics
 
             for (int i = 1; i < arr.Length; i++)
             {
-                for (int j = 0; j < arr.Length - 1; j++)
+                for (int j = 0; j < i; j++)
                 {
                     if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                    {
+                        lis[i] = lis[j] + 1;
+                    }
+                }
+            }
+
+            int max = 1;
+            foreach (int lisMax in lis)
+            {
+                max = Math.Max(max, lisMax);
+            }
+
+            return max;
+        }
+
+        /*
+            You are given n pairs of numbers. In every pair, the first number is always smaller than the second number. 
+            A pair (c, d) can follow another pair (a, b) if b < c. 
+            Chain of pairs can be formed in this fashion. 
+            Find the longest chain which can be formed from a given set of pairs.
+         */
+        public static int FindMaxOfChains(Tuple<int, int>[] pairs)
+        {
+            Array.Sort(pairs, (Tuple<int, int> v1, Tuple<int, int> v2) => v1.Item1.CompareTo(v2.Item1));
+
+            int[] lis = new int[pairs.Length];
+            for (int i = 0; i < pairs.Length; i++)
+            {
+                lis[i] = 1;
+            }
+
+            for (int i = 1; i < pairs.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (pairs[i].Item1 > pairs[j].Item2 && lis[i] < lis[j] + 1)
                     {
                         lis[i] = lis[j] + 1;
                     }
