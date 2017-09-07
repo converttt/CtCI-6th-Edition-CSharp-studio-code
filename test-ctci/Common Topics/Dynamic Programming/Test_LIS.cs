@@ -29,5 +29,12 @@ namespace test_ctci
                 new Tuple<int, int>(50, 90),
             }));
         }
+
+        [Fact]
+        public void TestMaxOfStrings()
+        {
+            Assert.Equal(3, LIS.FindMaxOfStrings("qweeer", "reeewq"));
+            Assert.Equal(5, LIS.FindMaxOfStrings("hello world", "who lo wolf"));
+        }
     }
 }
