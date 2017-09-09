@@ -36,5 +36,15 @@ namespace test_ctci
             Assert.Equal(3, LIS.FindMaxOfStrings("qweeer", "reeewq"));
             Assert.Equal(5, LIS.FindMaxOfStrings("hello world", "who lo wolf"));
         }
+
+        [Fact]
+        public void TestFindNumInsertions()
+        {
+            Assert.Equal(1, LIS.FindNumInsertions("ab"));
+            Assert.Equal(0, LIS.FindNumInsertions("aa"));
+            Assert.Equal(3, LIS.FindNumInsertions("abcd"));
+            Assert.Equal(4, LIS.FindNumInsertions("abcda"));
+            Assert.Equal(4, LIS.FindNumInsertions("abcde"));
+        }
     }
 }

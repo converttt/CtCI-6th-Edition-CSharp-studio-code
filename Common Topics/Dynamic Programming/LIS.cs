@@ -105,5 +105,36 @@ namespace Common_Topics
 
             return max;
         }
+
+        /*
+            Given a string, find the minimum number of characters to be inserted to convert it to palindrome.
+
+            A solution can be represented as a problem of the longest common subsequence of two strings.
+            This solution is valid only when insertions cab be done at the beginning or end of a string.
+         */
+        public static int FindNumInsertions(string str)
+        {
+            char[] baseStr = str.ToCharArray();
+            Array.Reverse(baseStr);
+            string strReversed = new String(baseStr);
+
+            int[] loookup = new int[str.Length];
+            int[,] mem = new int[str.Length, str.Length];
+            int max = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                for (int j = 0; j < str.Length; j++)
+                {
+                    if (str[i] == strReversed[j])
+                    {
+                        mem[i, j] = (i == 0 || j == 0) ? 1 : mem[i - 1, j - 1] + 1;
+                        max = Math.Max(max, mem[i, j]);
+                    }
+                }
+            }
+
+            return str.Length - max;
+        }
     }
 }
