@@ -101,7 +101,9 @@ namespace Common_Topics
             Given a string, find the minimum number of characters to be inserted to convert it to palindrome.
 
             A solution can be represented as a problem of the longest common subsequence of two strings.
-            This solution is valid only when insertions cab be done at the beginning or end of a string.
+            This solution is valid only when insertions cab be done at the beginning or end of a string (to append).
+
+            Time complexity: O(n^2)
          */
         public static int FindNumInsertions(string str)
         {
