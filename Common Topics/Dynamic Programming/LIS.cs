@@ -82,22 +82,13 @@ namespace Common_Topics
             int[,] mem = new int[str1.Length, str1.Length];
             int max = 0;
 
-            if (str1[0] == str2[0])
+            for (int i = 0; i < str1.Length; i++)
             {
-                for (int i = 0; i < str1.Length; i++)
-                {
-                    mem[0, i] = mem[i, 0] = 1;
-                }
-                max = 1;
-            }
-
-            for (int i = 1; i < str1.Length; i++)
-            {
-                for (int j = 1; j < str2.Length; j++)
+                for (int j = 0; j < str2.Length; j++)
                 {
                     if (str1[i] == str2[j])
                     {
-                        mem[i, j] = mem[i - 1, j - 1] + 1;
+                        mem[i, j] = (i == 0 || j == 0) ? 1 : mem[i - 1, j - 1] + 1;
                         max = Math.Max(max, mem[i, j]);
                     }
                 }
