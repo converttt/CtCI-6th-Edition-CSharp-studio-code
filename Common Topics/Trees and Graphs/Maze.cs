@@ -38,5 +38,28 @@ namespace Common_Topics
 
             return false;
         }
+
+        /*
+            Count number of ways to reach destination in a Maze
+         */
+        public static int WaysInMaze(int[,] maze, int x, int y, int num = 0)
+        {
+            if (x == maze.GetUpperBound(0) && y == maze.GetUpperBound(0))
+            {
+                return num + 1;
+            }
+
+            if (x + 1 <= maze.GetUpperBound(0) && maze[x + 1, y] == 0)
+            {
+                num = WaysInMaze(maze, x + 1, y, num);
+            }
+
+            if (y + 1 <= maze.GetUpperBound(0) && maze[x, y + 1] == 0)
+            {
+                num = WaysInMaze(maze, x, y + 1, num);
+            }
+
+            return num;
+        }
     }
 }

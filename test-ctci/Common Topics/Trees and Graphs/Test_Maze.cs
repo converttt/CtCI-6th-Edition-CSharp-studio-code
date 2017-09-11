@@ -25,5 +25,16 @@ namespace test_ctci
                 {0, 1, 1, 1}
             }, solution);
         }
+
+        [Fact]
+        public void WaysInMaze()
+        {
+            Assert.Equal(4, Maze.WaysInMaze(new int[,] {
+                {0,  0, 0, 0},
+                {0, -1, 0, 0},
+                {-1, 0, 0, 0},
+                {0,  0, 0, 0}
+            }, 0 , 0));
+        }
     }
 }
