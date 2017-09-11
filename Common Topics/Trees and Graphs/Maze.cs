@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Common_Topics
 {
@@ -60,6 +61,54 @@ namespace Common_Topics
             }
 
             return num;
+        }
+
+        public static int ShortestPath(int[,] maze, int nX, int nY, int mX, int mY)
+        {
+            if (nX == mX && nY == mY)
+            {
+                return 0;
+            }
+
+            int[,] solution = new int[maze.GetLength(0), maze.GetLength(0)];
+            int path = 0;
+
+            Queue<Tuple<int, int, int>> queue = new Queue<Tuple<int, int, int>>();
+            queue.Enqueue(new Tuple<int, int, int>(nX, nY, path));
+
+            while (queue.Count > 0)
+            {
+                Tuple<int, int, int> node = queue.Dequeue();
+                solution[node.Item1, node.Item2] = 1;
+                path = node.Item3 + 1;
+
+                if (node.Item1 == mX && node.Item2 == mY)
+                {
+                    return path;
+                }
+
+                if (node.Item1 - 1 >= 0 && maze[node.Item1 - 1, node.Item2] == 1 && solution[node.Item1 - 1, node.Item2] == 0)
+                {
+                    queue.Enqueue(new Tuple<int, int, int>(node.Item1 - 1, node.Item2, path));
+                }
+
+                if (node.Item2 - 1 >= 0 && maze[node.Item1, node.Item2 - 1] == 1 && solution[node.Item1, node.Item2 - 1] == 0)
+                {
+                    queue.Enqueue(new Tuple<int, int, int>(node.Item1, node.Item2 - 1, path));
+                }
+
+                if (node.Item1 + 1 <= maze.GetUpperBound(0) && maze[node.Item1 + 1, node.Item2] == 1 && solution[node.Item1 + 1, node.Item2] == 0)
+                {
+                    queue.Enqueue(new Tuple<int, int, int>(node.Item1 + 1, node.Item2, path));
+                }
+
+                if (node.Item2 + 1 <= maze.GetUpperBound(0) && maze[node.Item1, node.Item2 + 1] == 1 && solution[node.Item1, node.Item2 + 1] == 0)
+                {
+                    queue.Enqueue(new Tuple<int, int, int>(node.Item1, node.Item2 + 1, path));
+                }
+            }
+
+            return 0;
         }
     }
 }
