@@ -63,6 +63,9 @@ namespace Common_Topics
             return num;
         }
 
+        /*
+            Find shortest path in a maze
+         */
         public static int ShortestPath(int[,] maze, int nX, int nY, int mX, int mY)
         {
             if (nX == mX && nY == mY)
