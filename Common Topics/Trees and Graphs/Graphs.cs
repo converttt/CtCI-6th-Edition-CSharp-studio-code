@@ -61,6 +61,46 @@ namespace Common_Topics
             _AllPaths(start, destination);
         }
 
+        /*
+            Find if there is a path between two vertices in a graph.
+         */
+        public bool IsTherePath(int start, int destination)
+        {
+            if (start == destination)
+            {
+                return true;
+            }
+
+            foreach (int node in _graph.Nodes)
+            {
+                _visited[node] = false;
+            }
+
+            Stack<int> stack = new Stack<int>();
+            stack.Push(start);
+
+            while (stack.Count > 0)
+            {
+                _visited[start] = true;
+
+                int current = stack.Pop();
+
+                foreach (int node in _graph.Edges[current])
+                {
+                    if (node == destination)
+                    {
+                        return true;
+                    }
+                    else if (_visited[node] == false)
+                    {
+                        stack.Push(node);
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private void _AllPaths(int start, int destination)
         {
             _visited[start] = true;
