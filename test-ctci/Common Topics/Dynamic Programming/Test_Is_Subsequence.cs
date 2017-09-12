@@ -13,5 +13,15 @@ namespace test_ctci
             Assert.Equal(false, Is_Subsequence.IsSubsequence("AXY", "YADXCP"));
             Assert.Equal(true, Is_Subsequence.IsSubsequence("gksrek", "geeksforgeeks"));
         }
+
+        [Fact]
+        public void Intervealed()
+        {
+            Assert.Equal(false, Is_Subsequence.Intervealed("XXY", "XXZ", "XXZXXXY"));
+            Assert.Equal(true, Is_Subsequence.Intervealed("XY", "WZ", "WZXXXY"));
+            Assert.Equal(true, Is_Subsequence.Intervealed("XY", "X", "XXY"));
+            Assert.Equal(false, Is_Subsequence.Intervealed("YX", "X", "XXY"));
+            Assert.Equal(true, Is_Subsequence.Intervealed("XXY", "XXZ", "XXXXZY"));
+        }
     }
 }
