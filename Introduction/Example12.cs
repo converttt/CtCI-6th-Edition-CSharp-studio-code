@@ -5,6 +5,11 @@ namespace Introduction
 {
     public class Example12
     {
+        /*
+            Get all permutations of a string
+
+            Time complexity: O(n * n!)
+         */
         public List<string> GetPermutations(string str)
         {
             List<string> results = new List<string>();
