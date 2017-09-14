@@ -2,6 +2,10 @@
 
 namespace CH_01._Array_and_Strings
 {
+    /*
+        Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you
+        cannot use additional data structures?
+     */
     public class Q01_Is_Unique
     {
         public bool IsUniqueChar1(string str)
