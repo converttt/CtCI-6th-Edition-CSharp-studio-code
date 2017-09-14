@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CH_01._Array_and_Strings
 {
+    /*
+        Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+     */
     public class Q02_Check_Permutation
     {
         public bool IsPermutation1(string str1, string str2)
