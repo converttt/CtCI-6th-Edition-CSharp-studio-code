@@ -4,6 +4,10 @@ namespace CH_01._Array_and_Strings
 {
     public class Q07_Rotate_Matrix
     {
+        /*
+            Rotate Matrix: Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, 
+            write a method to rotate the image by 90 degrees. Can you do this in place?
+         */
         public void Rotate(int[,] matrix, int n)
         {
             for (var layer = 0; layer < n / 2; ++layer)
