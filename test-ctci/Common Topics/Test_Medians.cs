@@ -38,6 +38,17 @@ namespace test_ctci
             Assert.Equal(_MedianOf2(a, b), Medians.MedianOfUnequal(a, b));
         }
 
+        [Fact]
+        public void TestMedianFromStream()
+        {
+            Assert.Equal(12, Medians.MedianFromStream(12));
+            Assert.Equal(11, Medians.MedianFromStream(10));
+            Assert.Equal(12, Medians.MedianFromStream(20));
+            Assert.Equal(11, Medians.MedianFromStream(6));
+            Assert.Equal(10, Medians.MedianFromStream(4));
+            Assert.Equal((decimal) 10.5, Medians.MedianFromStream(11));
+        }
+
         private int _MedianOf2(int[] a, int[] b)
         {
             int[] arr = new int[a.Length + b.Length];

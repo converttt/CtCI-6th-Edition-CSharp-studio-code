@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Common_Topics
 {
@@ -23,6 +24,10 @@ namespace Common_Topics
             return _median;
         }
 
+        /*
+            Find the median of two arrays with the unequal sizes.
+            The complexity should be O(log(n))
+         */
         public static int MedianOfUnequal(int[] a, int[] b)
         {
             return _MedianOfUnequal(a, b);
@@ -197,6 +202,123 @@ namespace Common_Topics
             }
 
             return median;
+        }
+
+        /*
+            Median in a stream of integers (running integers).
+            Given that integers are read from a data stream. 
+
+            After each new integer is added to the list, print the list's updated median on a new line 
+            as a single double-precision number scaled to 1 decimal place (i.e., 12.3 format).
+         */
+        private static List<int> _minHeap = new List<int>();
+        private static List<int> _maxHeap = new List<int>();
+        private static List<int> _stream = new List<int>();
+
+        public static decimal MedianFromStream(int i)
+        {
+            _stream.Add(i);
+
+            if (_maxHeap.Count == 0 || _maxHeap[0] > i)
+            {
+                _maxHeap.Add(i);
+                _BalanceMax(_maxHeap.Count / 2);
+            } else
+            {
+                _minHeap.Add(i);
+                _BalanceMin(_minHeap.Count / 2);
+            }
+
+            while (_maxHeap.Count - _minHeap.Count > 1)
+            {
+                _minHeap.Add(_maxHeap[0]);
+                _maxHeap.RemoveAt(0);
+                _BalanceMin(_minHeap.Count / 2);
+            }
+
+            while (_minHeap.Count - _maxHeap.Count > 1)
+            {
+                _maxHeap.Add(_minHeap[0]);
+                _minHeap.Remove(0);
+                _BalanceMax(_maxHeap.Count / 2);
+            }
+
+            if (_stream.Count % 2 == 0)
+            {
+                decimal result = Decimal.Divide(_maxHeap[0] +_minHeap[0], 2);
+                return Math.Round(result, 1);
+            }
+            else if (_maxHeap.Count - _minHeap.Count > 0)
+            {
+                return _maxHeap[0];
+            }
+            else
+            {
+                return _minHeap[0];
+            }
+        }
+
+        private static void _BalanceMax(int indx)
+        {
+            if (indx < 0)
+            {
+                return;
+            }
+
+            if ((indx * 2 + 1) <= _maxHeap.Count - 1)
+            {
+                if (_maxHeap[indx * 2 + 1] > _maxHeap[indx])
+                {
+                    _Swap(_maxHeap, indx, indx * 2 + 1);
+                    _BalanceMax(indx * 2 + 1);
+                }
+            }
+            
+            if ((indx * 2 + 2) <= _maxHeap.Count - 1)
+            {
+                if (_maxHeap[indx * 2 + 2] > _maxHeap[indx])
+                {
+                    _Swap(_maxHeap, indx, indx * 2 + 2);
+                    _BalanceMax(indx * 2 + 1);
+                }
+            }
+
+            _BalanceMax(indx - 1);
+        }
+
+        private static void _BalanceMin(int indx)
+        {
+            if (indx < 0)
+            {
+                return;
+            }
+
+            if ((indx * 2 + 1) <= _minHeap.Count - 1)
+            {
+                if (_minHeap[indx * 2 + 1] < _minHeap[indx])
+                {
+                    _Swap(_minHeap, indx, indx * 2 + 1);
+                    _BalanceMin(indx * 2 + 1);
+                }
+            }
+            
+            if ((indx * 2 + 2) <= _minHeap.Count - 1)
+            {
+                if (_minHeap[indx * 2 + 2] < _minHeap[indx])
+                {
+                    _Swap(_minHeap, indx, indx * 2 + 2);
+                    _BalanceMin(indx * 2 + 1);
+                }
+            }
+
+            _BalanceMin(indx - 1);
+        }
+
+        private static void _Swap(List<int> heap, int indx1, int indx2)
+        {
+            int tmp = heap[indx1];
+            heap[indx1] = heap[indx2];
+            heap[indx2] = tmp;
         }
     }
 }
