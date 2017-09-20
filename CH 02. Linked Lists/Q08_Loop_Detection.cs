@@ -4,6 +4,10 @@ using lib_ctci;
 
 namespace CH_02._Linked_Lists
 {
+    /*
+        Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a
+        route between two nodes.
+     */
     public class Q08_Loop_Detection<T>
     {
         public CtciLinkedListNode<T> FindBeginning(CtciLinkedListNode<T> head)
