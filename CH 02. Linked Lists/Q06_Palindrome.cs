@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CH_02._Linked_Lists
 {
+    /*
+        Implement a function to check if a linked list is a palindrome.
+     */
     public class Q06_Palindrome<T>
     {
         public bool IsPalindrome1(LinkedList<T> list)
