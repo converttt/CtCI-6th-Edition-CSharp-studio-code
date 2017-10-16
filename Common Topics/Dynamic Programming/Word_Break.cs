@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Common_Topics
 {
+    /*
+        Given an input string and a dictionary of words, find out if the input string can be segmented into a space-separated sequence of dictionary words.
+     */
     public class Word_Break
     {
         protected List<string> dictionary = new List<string>();

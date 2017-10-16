@@ -15,6 +15,7 @@ namespace Common_Topics
             – One write operation between x+5 to x-5 to location M, will be cause of conflict for a thread accessing location M at time x where x is some time in standard unit of time measurement.
             – Example – If thread T1 accessed memory location M at time x+1 and if a thread T2 accesses location M before time x+6, then T1 and T2 are candidate of conflict given one of them does write operation.
 
+            Find conflicted pairs of processes
             Complexity: O(nLogn + m), m - the number of conflicts
          */
         public static List<Tuple<Greedy_Process, Greedy_Process>> FindConflicts(Greedy_Process[] processes)
