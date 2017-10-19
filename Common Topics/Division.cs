@@ -4,6 +4,9 @@ namespace Common_Topics
 {
     public static class Division
     {
+        /*
+            Divide two integers without using multiplication, division and mod operator.
+         */
         public static int Divide(int divident, int divisor)
         {
             if (divisor == 0)
