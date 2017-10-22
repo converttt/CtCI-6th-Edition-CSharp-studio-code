@@ -9,9 +9,9 @@ namespace Common_Topics
         const int MAX_BUNCHES = 3;
         const int MAX_SLOTS = 3;
 
-        private Queue<IThreads_Task> _queue = new Queue<IThreads_Task>();
+        private volatile Queue<IThreads_Task> _queue = new Queue<IThreads_Task>();
         private int _bunch = 1;
-        private Object lockObject = new Object();
+        private readonly Object lockObject = new Object();
 
         public void Producing()
         {
