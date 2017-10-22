@@ -14,9 +14,14 @@ namespace Common_Topics
             Threads_Consumer consumer = new Threads_Consumer(worker);
             
             Thread p = new Thread(producer.Produce);
-            Thread c = new Thread(consumer.Consume);
+            Thread c1 = new Thread(consumer.Consume);
+            Thread c2 = new Thread(consumer.Consume);
 
-            c.Start();
+            c1.Name = "Thread 1";
+            c1.Start();
+
+            c2.Name = "Thread 2";
+            c2.Start();
 
             Thread.Sleep(1000);
 
