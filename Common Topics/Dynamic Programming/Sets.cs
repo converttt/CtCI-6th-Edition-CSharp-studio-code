@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Common_Topics
 {
@@ -86,9 +87,53 @@ namespace Common_Topics
             return false;
         }
 
+        /**
+            Finding all subsets of a given set
+
+            Value of Counter            Subset
+                000                    -> Empty set
+                001                    -> a
+                010                    -> b
+                011                    -> ab
+                100                    -> c
+                101                    -> ac
+                110                    -> bc
+                111                    -> abc
+         */
+        public static List<int>[] Solution3(int[] arr)
+        {
+            int resultSize = Convert.ToInt32(Math.Pow(2, arr.Length));
+            List<int>[] res = new List<int>[resultSize];
+
+            for (int i = 0; i < resultSize; i++)
+            {
+                res[i] = new List<int>();
+                int j = i, k = 0;
+
+                do
+                {
+                    if (j % 2 == 1)
+                    {
+                        res[i].Add(arr[k]);
+                    }
+
+                    j >>= 1;
+                    k++;
+                } while (j > 0);
+            }
+
+            return res;
+        }
+
         /*
             Partition a set into two subsets such that the difference of subset sums is minimum
+
+            If there is a set S with n elements, then if we assume Subset1 has m elements, 
+            Subset2 must have n-m elements and the value of abs(sum(Subset1) – sum(Subset2)) should be minimum.
          */
-        
+        // public static int Solution4(int[] arr)
+        // {
+
+        // }
     }
 }
