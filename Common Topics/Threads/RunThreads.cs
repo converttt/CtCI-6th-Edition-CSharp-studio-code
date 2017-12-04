@@ -28,6 +28,24 @@ namespace Common_Topics
             p.Start();
         }
 
+        public static void CPQueueTemplate()
+        {
+            CPQueue cpQueue = new CPQueue();
+            Random rand = new Random();
+            for (int i = 0; i < 11; i++)
+            {
+                int j = i;
+                cpQueue.EnqueuAction(() => {
+                    Console.WriteLine(String.Format("Job {0} is started", j));
+                    Thread.Sleep(rand.Next(500, 1000));
+                    Console.WriteLine(String.Format("Job {0} is finished", j));
+                });
+            }
+
+            cpQueue.ShutDown(true);
+            Console.WriteLine("All jobs are completed");
+        }
+
         public static void Semaphores()
         {
             Thread_WorkerSemaphores worker = new Thread_WorkerSemaphores();

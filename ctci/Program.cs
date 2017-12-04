@@ -24,6 +24,11 @@ namespace ctci
                 Producer Consumer Problem with Semaphores
              */
             // Threads_RunThreads.Semaphores();
+
+            /*
+                Producer Consumer Pattern with a queue
+             */
+            Threads_RunThreads.CPQueueTemplate();
         }
     }
 }
