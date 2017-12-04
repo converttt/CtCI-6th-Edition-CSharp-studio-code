@@ -28,7 +28,7 @@ namespace ctci
             /*
                 Producer Consumer Pattern with a queue
              */
-            Threads_RunThreads.CPQueueTemplate();
+            // Threads_RunThreads.CPQueueTemplate();
         }
     }
 }
