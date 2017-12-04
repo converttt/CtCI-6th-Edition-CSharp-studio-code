@@ -131,9 +131,72 @@ namespace Common_Topics
             If there is a set S with n elements, then if we assume Subset1 has m elements, 
             Subset2 must have n-m elements and the value of abs(sum(Subset1) – sum(Subset2)) should be minimum.
          */
-        // public static int Solution4(int[] arr)
-        // {
+        public static int Solution4(int[] arr)
+        {
+            int sum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                sum += arr[i];
+            }
 
-        // }
+            return Partitioning2(arr, arr.Length - 1, 0, sum);
+        }
+
+        public static int Partitioning2(int[] arr, int i, int tmpSum, int sum)
+        {
+            if (i == 0)
+            {
+                return Math.Abs(sum - 2 * tmpSum);
+            }
+
+            return Math.Min(Partitioning2(arr, i - 1, tmpSum + arr[i], sum), 
+                Partitioning2(arr, i - 1, tmpSum, sum));
+        }
+
+        public static int Solution5(int[] arr)
+        {
+            int sum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                sum += arr[i];
+            }
+
+            bool[,] buff = new bool[sum + 1, arr.Length + 1];
+            for (int i = 0; i <= buff.GetUpperBound(1); i++)
+            {
+                buff[0, i] = true;
+            }
+
+            for (int i = 1; i <= buff.GetUpperBound(0); i++)
+            {
+                buff[i, 0] = false;
+            }
+
+            for (int j = 1; j <= buff.GetUpperBound(0); j++)
+            {
+                for (int i = 1; i <= buff.GetUpperBound(1); i++)
+                {
+                    bool included = (i >= 1 && j - arr[i - 1] >= 0) 
+                        ? buff[j - arr[i - 1], i - 1] 
+                        : false;
+
+                    bool excluded = (i >= 1) ? buff[j, i - 1] : false;
+
+                    buff[j, i] = included || excluded;
+                }
+            }
+
+            int diff = Int32.MaxValue;
+            for (int i = sum / 2; i >= 0; i--)
+            {
+                if (buff[sum - i * 2, buff.GetUpperBound(1)])
+                {
+                    diff = sum - i * 2;
+                    break;
+                }
+            }
+
+            return diff;
+        }
     }
 }

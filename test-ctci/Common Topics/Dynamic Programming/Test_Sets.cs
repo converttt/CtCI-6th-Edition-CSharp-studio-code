@@ -29,5 +29,15 @@ namespace test_ctci
             Assert.Equal(res[6][1], 3);
             Assert.Equal(res[6][0], 2);
         }
+
+        [Fact]
+        public void CloseSum()
+        {
+            Assert.Equal(Sets.Solution4(new int[] {1, 6, 11, 5}), 1);
+            Assert.Equal(Sets.Solution4(new int[] {3, 1, 4, 2, 2, 1}), 1);
+
+            Assert.Equal(Sets.Solution5(new int[] {1, 6, 11, 5}), 1);
+            Assert.Equal(Sets.Solution5(new int[] {3, 1, 4, 2, 2, 1}), 1);
+        }
     }
 }
