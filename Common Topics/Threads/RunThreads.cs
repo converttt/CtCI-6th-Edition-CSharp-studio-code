@@ -6,6 +6,7 @@ namespace Common_Topics
     public static class Threads_RunThreads
     {
         public const int CONSUMERS_IN_POOL = 7;
+        static private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
 
         public static void Monitor()
         {
@@ -65,6 +66,24 @@ namespace Common_Topics
             Thread.Sleep(1000);
 
             p.Start();
+        }
+
+        public static void readWriteLockSlim()
+        {
+            Thread readA = new Thread(LockSlim.Read);
+            Thread readB = new Thread(LockSlim.Read);
+            Thread writeC = new Thread(LockSlim.Write);
+            Thread writeD = new Thread(LockSlim.Write);
+
+            readA.Start("readA");
+            readB.Start("readB");
+            writeC.Start("writeC");
+            writeD.Start("writeD");
+
+            readA.Join();
+            readB.Join();
+            writeC.Join();
+            writeD.Join();
         }
     }
 }
